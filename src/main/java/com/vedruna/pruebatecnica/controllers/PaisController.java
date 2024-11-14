@@ -1,3 +1,5 @@
+package com.vedruna.pruebatecnica.controllers;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,28 +45,25 @@ public class PaisController {
 
     @GetMapping("/country")
     public ResponseEntity<?> obtenerDatosPoblacionales(@RequestParam(required = false) String region, @RequestParam(required = false) Long poblacion) {
-        // Validar los parámetros de entrada
         if (region != null && region.length() < 3) {
             Map<String, String> error = new HashMap<>();
             error.put("error", "La región no puede tener menos de 3 caracteres");
-            return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);  // Aquí deuelvo el mapa con el error
+            return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST); 
         }
 
         if (poblacion != null && poblacion <= 0) {
             Map<String, String> error = new HashMap<>();
             error.put("error", "La población debe ser un número positivo");
-            return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);  // Aquí deuelvo el mapa con el error
+            return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST); 
         }
 
-        // Obtener todos los países almacenados
+        
         List<Pais> paises = paisService.obtenerPaisesAlmacenados();
 
-        // Convertir los objetos Pais a PaisDTO (usando el constructor de PaisDTO)
-        List<PaisDTO> paisesDTO = paises.stream()  // 'paises' es de tipo List<Pais>
-                                        .map(pais -> new PaisDTO(pais))  // Convierte cada Pais a PaisDTO
-                                        .collect(Collectors.toList());  // Recoge el resultado en una lista
+        List<PaisDTO> paisesDTO = paises.stream() 
+                                        .map(pais -> new PaisDTO(pais))  
+                                        .collect(Collectors.toList());  
 
-        // Retornar la lista de PaisDTO en la respuesta
         return new ResponseEntity<>(paisesDTO, HttpStatus.OK);
     }
 

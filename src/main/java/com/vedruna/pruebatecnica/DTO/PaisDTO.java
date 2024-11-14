@@ -4,8 +4,8 @@ import lombok.Data;
 import com.vedruna.pruebatecnica.persistance.models.Pais;
 import lombok.NoArgsConstructor;
 
-@Data /* @Data es una anotación de Lombok que genera automáticamente los métodos getter, setter, toString(), equals(), y hashCode() para los campos de la clase. */
-@NoArgsConstructor /* La anotación @NoArgsConstructor también es de Lombok y genera un constructor sin argumentos. Esto es útil cuando necesitas crear instancias de la clase sin pasarle parámetros. */
+@Data
+@NoArgsConstructor
 public class PaisDTO {
 
     private int id;
@@ -13,7 +13,6 @@ public class PaisDTO {
     private String poblacion;
     private String region;
 
-    // Constructor para convertir de Pais a PaisDTO
     public PaisDTO(Pais pais) {
         this.id = pais.getId().intValue();
         this.nombre = pais.getNombrePais();
