@@ -10,9 +10,6 @@ import com.vedruna.pruebatecnica.persistance.models.Pais;
 @Service
 public interface PaisServiceI {
 
-    // Almacenar datos de un país
-    void almacenarDatos(PaisDTO paisDTO);
-
     // Obtener un país por su nombre (devuelve un PaisDTO para separar el modelo y la lógica)
     PaisDTO obtenerPaisPorNombre(String nombre);
 
@@ -21,6 +18,8 @@ public interface PaisServiceI {
 
     // Eliminar un país por su ID
     void eliminarPais(Long id);
+
+    void almacenarDatos(Pais pais);
 
     // Obtener un país por su ID (puede devolver un PaisDTO)
     PaisDTO obtenerPais(Long id);
