@@ -20,7 +20,7 @@ public class PaisServiceImpl implements PaisServiceI {
     @Override
     public PaisDTO obtenerPaisPorNombre(String nombre) {
         Pais pais = paisRepo.findByNombrePais(nombre);
-        return pais != null ? new PaisDTO(pais) : null; // Devuelve PaisDTO
+        return pais != null ? new PaisDTO(pais) : null;
     }
 
     
@@ -32,29 +32,28 @@ public class PaisServiceImpl implements PaisServiceI {
     @Override
     public PaisDTO obtenerPais(Long id) {
         Optional<Pais> paisOpt = paisRepo.findById(id);
-        return paisOpt.map(PaisDTO::new).orElse(null); // Mapear a PaisDTO si se encuentra
+        return paisOpt.map(PaisDTO::new).orElse(null); 
     }
 
     @Override
     public List<PaisDTO> obtenerPaisesPorRegion(String regionPais) {
         List<Pais> paises = paisRepo.findByRegionPais(regionPais);
-        return paises.stream().map(PaisDTO::new).collect(Collectors.toList()); // Mapear a PaisDTO
+        return paises.stream().map(PaisDTO::new).collect(Collectors.toList()); 
     }
 
     @Override
     public List<PaisDTO> obtenerPaisesPorPoblacion(Long poblacion) {
         List<Pais> paises = paisRepo.findByPoblacion(poblacion);
-        return paises.stream().map(PaisDTO::new).collect(Collectors.toList()); // Mapear a PaisDTO
+        return paises.stream().map(PaisDTO::new).collect(Collectors.toList()); 
     }
 
 
     @Override
     public void almacenarDatos(PaisDTO paisDTO) {
-        Pais pais = convertirDTOaEntidad(paisDTO); // Convierte PaisDTO a Pais
+        Pais pais = convertirDTOaEntidad(paisDTO); 
         paisRepo.save(pais);
     }
 
-    // Método de conversión
     private Pais convertirDTOaEntidad(PaisDTO paisDTO) {
         Pais pais = new Pais();
         pais.setNombrePais(pais.getNombrePais());

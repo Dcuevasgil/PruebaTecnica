@@ -19,7 +19,7 @@ public class Pais {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // No es necesario @NotNull, ya que la base de datos lo maneja automáticamente
+    private Long id; 
 
     @Column(name = "country_name", nullable = false)
     @NotNull(message = "El nombre del país no puede ser nulo")
@@ -35,19 +35,17 @@ public class Pais {
     private String regionPais;
 
     @Column(name = "area")
-    private Double areaPais;  // Este campo puede ser null, no necesita @NotNull
+    private Double areaPais;
 
-    // Constructor que acepta un nombre, población y región
     public Pais(String nombrePais, Long poblacion, String regionPais) {
         this.nombrePais = nombrePais;
         this.poblacion = poblacion;
         this.regionPais = regionPais;
     }
     
-    // Constructor que acepta un nombre, población (String) y región
     public Pais(String nombrePais, String poblacion, String regionPais) {
         this.nombrePais = nombrePais;
-        this.poblacion = Long.parseLong(poblacion); // Asegurate de convertir el String a Long
+        this.poblacion = Long.parseLong(poblacion);
         this.regionPais = regionPais;
     }
 }
