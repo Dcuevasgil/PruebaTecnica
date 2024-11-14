@@ -19,7 +19,7 @@ public interface PaisServiceI {
     // Eliminar un país por su ID
     void eliminarPais(Long id);
 
-    void almacenarDatos(Pais pais);
+    void almacenarDatos(PaisDTO paisDTO);
 
     // Obtener un país por su ID (puede devolver un PaisDTO)
     PaisDTO obtenerPais(Long id);

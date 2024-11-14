@@ -49,8 +49,18 @@ public class PaisServiceImpl implements PaisServiceI {
 
 
     @Override
-    public void almacenarDatos(Pais pais) {
+    public void almacenarDatos(PaisDTO paisDTO) {
+        Pais pais = convertirDTOaEntidad(paisDTO); // Convierte PaisDTO a Pais
         paisRepo.save(pais);
+    }
+
+    // Método de conversión
+    private Pais convertirDTOaEntidad(PaisDTO paisDTO) {
+        Pais pais = new Pais();
+        pais.setNombrePais(pais.getNombrePais());
+        pais.setRegionPais(pais.getRegionPais());
+        pais.setPoblacion(pais.getPoblacion());
+        return pais;
     }
 
 
